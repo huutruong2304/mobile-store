@@ -1,101 +1,191 @@
-import Image from "next/image";
+import CategoryItem from '@/components/category-item';
+import {
+  AirpodIcon,
+  IphoneIcon,
+  LaptopIcon,
+  PhoneCableIcon,
+  PrinterIcon,
+  SimIcon,
+  SmartWatchIcon,
+  UsedDeviceIcon,
+} from '@/components/icon/Icons';
+import NewsCard from '@/components/news-card';
+import ProductCard from '@/components/product-card';
+import {
+  MOCK_HEADSET,
+  MOCK_IPHONE,
+  MOCK_LAPTOP,
+  MOCK_SMARTWATCH,
+  MOCK_TECH_NEWS,
+} from '@/db/mock-api';
+import {
+  AspectRatio,
+  Box,
+  Grid,
+  Heading,
+  HStack,
+  Link as ChakraLink,
+} from '@chakra-ui/react';
+import Image from 'next/image';
+import Link from 'next/link';
+import { ReactNode } from 'react';
+
+type TitleProps = {
+  value: string;
+  extraClassName?: string;
+};
+
+const Title = ({ value, extraClassName }: TitleProps) => {
+  return (
+    <Heading
+      size={'xl'}
+      className={
+        'py-2 text-black font-bold  uppercase ' +
+        (extraClassName ? extraClassName : '')
+      }
+    >
+      {value}
+    </Heading>
+  );
+};
+
+type SectionHeaderProps = {
+  title: string;
+  href: string;
+};
+
+const SectionHeader = ({ title, href }: SectionHeaderProps) => {
+  return (
+    <HStack justifyContent={'space-between'} alignItems={'baseline'}>
+      <Title value={title} />
+      <Link href={href}>
+        <ChakraLink variant={'underline'}>View all</ChakraLink>
+      </Link>
+    </HStack>
+  );
+};
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const categories: {
+    title: string;
+    href: string;
+    icon: ReactNode;
+  }[] = [
+    { title: 'Smartphone', href: '/smartphone', icon: <IphoneIcon /> },
+    { title: 'Laptop', href: '/laptop', icon: <LaptopIcon /> },
+    { title: 'Headphone', href: '/headphone', icon: <AirpodIcon /> },
+    { title: 'Smartwatch', href: '/smartwatch', icon: <SmartWatchIcon /> },
+    { title: 'Accessories', href: '/accessories', icon: <PhoneCableIcon /> },
+    { title: 'Printer', href: '/printer', icon: <PrinterIcon /> },
+    { title: 'Sim', href: '/sim', icon: <SimIcon /> },
+    { title: 'Used', href: '/used', icon: <UsedDeviceIcon /> },
+  ];
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+  return (
+    <Box className="w-full">
+      <Box className="py-2">
+        <AspectRatio ratio={3 / 1}>
+          <Image
+            src={'/banners/banner-1.jpg'}
+            alt="banner"
+            layout="fill"
+            quality={100}
+          />
+        </AspectRatio>
+      </Box>
+      <Box className="px-2">
+        <Title value="Categories" extraClassName="text-center" />
+        <Grid templateColumns="repeat(4, 1fr)" gap="2" className="py-2">
+          {categories.map(cate => (
+            <CategoryItem
+              key={cate.href}
+              title={cate.title}
+              icon={cate.icon}
+              href={cate.href}
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+          ))}
+        </Grid>
+      </Box>
+      <Box className="py-4 px-2">
+        <SectionHeader title="Smartphone" href="#" />
+        <Grid templateColumns={'repeat(2, 1fr)'} gap={4} className="py-2">
+          {MOCK_IPHONE.slice(0, 4).map(item => (
+            <ProductCard
+              key={item.id}
+              name={item.name}
+              price={item.price}
+              oldPrice={item.price}
+              thumb={item.thumb}
+              tags={item.tags}
+              href={`/smartphone/${item.id}`}
+            />
+          ))}
+        </Grid>
+      </Box>
+
+      <Box className="py-4 px-2">
+        <SectionHeader title="Laptop" href="#" />
+        <Grid templateColumns={'repeat(2, 1fr)'} gap={4} className="py-2">
+          {MOCK_LAPTOP.slice(0, 4).map(item => (
+            <ProductCard
+              key={item.id}
+              name={item.name}
+              price={item.price}
+              oldPrice={item.price}
+              thumb={item.thumb}
+              tags={item.tags}
+              href={`/smartphone/${item.id}`}
+            />
+          ))}
+        </Grid>
+      </Box>
+
+      <Box className="py-4 px-2">
+        <SectionHeader title="Headphone" href="#" />
+        <Grid templateColumns={'repeat(2, 1fr)'} gap={4} className="py-2">
+          {MOCK_HEADSET.slice(0, 4).map(item => (
+            <ProductCard
+              key={item.id}
+              name={item.name}
+              price={item.price}
+              oldPrice={item.price}
+              thumb={item.thumb}
+              tags={item.tags}
+              href={`/smartphone/${item.id}`}
+            />
+          ))}
+        </Grid>
+      </Box>
+      <Box className="py-4 px-2">
+        <SectionHeader title="Smartwatch" href="#" />
+        <Grid templateColumns={'repeat(2, 1fr)'} gap={4} className="py-2">
+          {MOCK_SMARTWATCH.slice(0, 4).map(item => (
+            <ProductCard
+              key={item.id}
+              name={item.name}
+              price={item.price}
+              oldPrice={item.price}
+              thumb={item.thumb}
+              tags={item.tags}
+              href={`/smartphone/${item.id}`}
+            />
+          ))}
+        </Grid>
+      </Box>
+
+      <Box className="py-4 px-2">
+        <SectionHeader title="Tech News" href="#" />
+        <Box className="py-2 flex overflow-auto gap-4 hide-scrollbar">
+          {MOCK_TECH_NEWS.slice(0, 4).map(item => (
+            <NewsCard
+              key={item.id}
+              title={item.title}
+              thumb={item.thumb}
+              href={`/${item.id}`}
+            />
+          ))}
+        </Box>
+      </Box>
+    </Box>
   );
 }
