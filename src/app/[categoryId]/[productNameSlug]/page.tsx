@@ -216,12 +216,12 @@ export default function Page() {
   ];
 
   return (
-    <Box className="min-h-lvh w-full p-2">
+    <Box className="w-full p-2">
       <BreadcrumbRoot className="py-2">
-        <BreadcrumbLink href="#">
+        <BreadcrumbLink href="/">
           <LuHouse /> Home
         </BreadcrumbLink>
-        <BreadcrumbLink href="#">Smartphone</BreadcrumbLink>
+        <BreadcrumbLink href="/smartphone">Smartphone</BreadcrumbLink>
         <BreadcrumbCurrentLink className="w-40 md:w-max truncate">
           {details.name}{' '}
         </BreadcrumbCurrentLink>

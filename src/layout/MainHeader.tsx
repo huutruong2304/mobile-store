@@ -7,13 +7,9 @@ import {
   DrawerHeader,
   DrawerTitle,
   DrawerBody,
-  DrawerFooter,
-  DrawerActionTrigger,
   DrawerCloseTrigger,
 } from '@/components/ui/drawer';
 import {
-  Button,
-  Kbd,
   IconButton,
   HStack,
   Group,
