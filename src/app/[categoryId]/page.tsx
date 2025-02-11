@@ -1,4 +1,5 @@
 import CategoryFilter from '@/components/category-filter';
+import CategoryOrderItem from '@/components/category-order-item';
 import ListPagination from '@/components/list-pagination';
 import ProductCard from '@/components/product-card';
 import {
@@ -20,6 +21,7 @@ import {
 } from '@/components/ui/pagination';
 import { MOCK_IPHONE } from '@/db/mock-api';
 import { Box, Grid, HStack } from '@chakra-ui/react';
+import Link from 'next/link';
 import { LuHouse } from 'react-icons/lu';
 
 export default function Page() {
@@ -84,7 +86,7 @@ export default function Page() {
   };
 
   return (
-    <Box className="w-full p-2">
+    <Box className="w-full p-2 container mx-auto">
       {/* breadcrumb */}
       <Box className="py-2">
         <BreadcrumbRoot>
@@ -108,19 +110,25 @@ export default function Page() {
       {/* sorting */}
       {/* by name, best sellers, discounts, newest, ... */}
       <Box className="py-0">
-        <HStack className="">
+        <HStack>
           {data.sorting.default.map(sorting => (
-            <Box key={sorting.value} className="w-1/5">
-              <Button variant={'plain'}>{sorting.label}</Button>
-            </Box>
+            <CategoryOrderItem
+              key={sorting.value}
+              label={sorting.label}
+              value={sorting.value}
+            />
           ))}
 
           <Box className="w-1/5">
             <NativeSelectRoot variant={'plain'}>
               <NativeSelectField placeholder="Price">
-                {data.sorting.price.map(sort => (
-                  <option key={sort.value} value={sort.value}>
-                    {sort.label}
+                {data.sorting.price.map(sorting => (
+                  <option key={sorting.value} value={sorting.value}>
+                    <CategoryOrderItem
+                      key={sorting.value}
+                      label={sorting.label}
+                      value={sorting.value}
+                    />
                   </option>
                 ))}
               </NativeSelectField>
@@ -130,7 +138,15 @@ export default function Page() {
       </Box>
       {/* products  */}
       <Box className="py-2">
-        <Grid templateColumns={'repeat(2, 1fr)'} gap={4} className="py-2">
+        <Grid
+          templateColumns={{
+            base: 'repeat(2, 1fr)',
+            md: 'repeat(4, 1fr)',
+            lg: 'repeat(6, 1fr)',
+          }}
+          gap={4}
+          className="py-2"
+        >
           {MOCK_IPHONE.slice(0, 10).map(item => (
             <ProductCard
               key={item.id}

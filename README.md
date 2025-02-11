@@ -3,6 +3,7 @@ List pages:
 /[categoryId]: Category page
 /[productNameSlug]: Product details
 /reviews: All product's reviews
+/cart:
 
 ## conventions:
 

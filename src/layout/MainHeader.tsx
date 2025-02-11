@@ -49,7 +49,9 @@ const MainHeader = () => {
           </IconButton>
 
           <IconButton rounded="full" variant={'subtle'}>
-            <CartIcon />
+            <Link href={'/cart'}>
+              <CartIcon />
+            </Link>
           </IconButton>
 
           <IconButton rounded="full" variant={'subtle'}>

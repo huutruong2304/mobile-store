@@ -5,7 +5,7 @@ export const MOCK_IPHONE = [
     thumb:
       'https://cdn.tgdd.vn/Products/Images/42/332936/oppo-reno13-f-blue-thumb-600x600.jpg',
     price: 9990000,
-    oldPrice: null,
+    oldPrice: 12990000,
     tags: ['Full HD+', '6.67"'],
   },
   {
