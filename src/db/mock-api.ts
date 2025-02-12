@@ -818,4 +818,40 @@ export const MOCK_TECH_NEWS = [
     thumb:
       'https://cdn-media.sforum.vn/storage/app/media/ace%20chu%20tu/du-doan-thi-truong-tv-mini-led-2025/du-doan-thi-truong-tv-mini-led-2025-3.jpg',
   },
+
+  {
+    id: 'N006',
+    title:
+      'Detailed review of Xiaomi Redmi Note 14 Pro Plus: Is it the "king of mid-range"?',
+    thumb:
+      'https://cdn-media.sforum.vn/storage/app/media/luudat/danh-gia-redmi-note-14-pro-plus/danh-gia-redmi-note-14-pro-plus-thumbnail.jpg',
+  },
+  {
+    id: 'N007',
+    title:
+      'New Year bonus of 70 million, designer "all in" on buying a thin and light gaming laptop and the unexpected outcome!',
+    thumb:
+      'https://cdn-media.sforum.vn/storage/app/media/thongvo/danh-gia-msi-stealth-a16-ai-plus/danh-gia-msi-stealth-a16-ai-plus-cover.jpg',
+  },
+  {
+    id: 'N008',
+    title:
+      'Top 5 best laptops of early 2025: Meeting all needs from study to creativity',
+    thumb:
+      'https://cdn-media.sforum.vn/storage/app/media/ace%20chu%20tu/day-la-5-chiec-laptop-tot-nhat-dau-nam-2025-/day-la-5-chiec-laptop-tot-nhat-dau-nam-2025-1.jpg',
+  },
+  {
+    id: 'N009',
+    title:
+      'ASUS ROG Phone 9 FE is about to be launched and here is the evidence',
+    thumb:
+      'https://cdn-media.sforum.vn/storage/app/media/trannghia/thong-tin-ROG-Phone-9-FE-cover.jpg',
+  },
+  {
+    id: 'N0010',
+    title:
+      'Predictions for the 2025 TV market: Mini-LED "dethrones" OLED, high-end technology infiltrates budget TVs',
+    thumb:
+      'https://cdn-media.sforum.vn/storage/app/media/ace%20chu%20tu/du-doan-thi-truong-tv-mini-led-2025/du-doan-thi-truong-tv-mini-led-2025-3.jpg',
+  },
 ];

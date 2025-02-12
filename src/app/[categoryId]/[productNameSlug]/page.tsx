@@ -216,7 +216,8 @@ export default function Page() {
   ];
 
   return (
-    <Box className="w-full p-2">
+    <Box className="w-full p-2 ">
+      {/* breadcrumb */}
       <BreadcrumbRoot className="py-2">
         <BreadcrumbLink href="/">
           <LuHouse /> Home
@@ -226,107 +227,117 @@ export default function Page() {
           {details.name}{' '}
         </BreadcrumbCurrentLink>
       </BreadcrumbRoot>
-      <ProductImageViewer
-        images={details.images}
-        features={details.keyFeatures}
-      />
-      <Box className="py-1">
-        <Heading as={'h1'} size={'xl'} className="font-bold">
-          {details.name}
-        </Heading>
+      <Box className="flex flex-col md:flex-row space-x-4">
+        {/* product photo */}
+        <Box className="py-1 w-full md:w-1/2">
+          <ProductImageViewer
+            images={details.images}
+            features={details.keyFeatures}
+          />
+        </Box>
+        <Box className="py-1 w-full md:w-1/2">
+          {/* name */}
+          <Box className="py-1">
+            <Heading as={'h1'} size={'xl'} className="font-bold">
+              {details.name}
+            </Heading>
 
-        <HStack>
-          <Text textStyle={'sm'} className="py-1 text-neutral-500 ">
-            Đã bán 71,5k
-          </Text>
-          <HStack>
-            <HiStar className="text-yellow-400" />
-            <Text textStyle={'sm'} className="py-1 text-neutral-500 ">
-              4.9
-            </Text>
-          </HStack>
-        </HStack>
-      </Box>
-
-      <Box className="py-0">
-        <Heading size={'md'} className="font-bold pb-2">
-          Storage
-        </Heading>
-        <Grid templateColumns={'repeat(3, 1fr)'} gap={2}>
-          {details.variants.storage.map(item => (
-            <GridItem
-              key={item.id}
-              className="max-w-44 h-16 border shadow rounded-xl flex flex-col justify-center items-center"
-            >
-              <Heading size={'md'}>{item.value}</Heading>
-              <Text textStyle={'xs'}>{formatCurrency(item.price)}</Text>
-            </GridItem>
-          ))}
-        </Grid>
-      </Box>
-      <Box className="py-2">
-        <Heading size={'md'} className="font-bold pb-2">
-          Color
-        </Heading>
-        <Grid templateColumns={'repeat(3, 1fr)'} gap={2}>
-          {details.variants.color.map(item => (
-            <GridItem
-              key={item.id}
-              className="max-w-44 h-16 border shadow rounded-xl flex flex-row justify-center items-center"
-            >
-              <HStack className="w-full justify-start">
-                <Box className="bg-white h-10 w-10 rounded-xl relative">
-                  <Image
-                    src={details.images[0]}
-                    alt="iphone-16"
-                    className="object-cover"
-                    fill
-                  />
-                </Box>
-                <Box>
-                  <Heading size={'sm'}>{item.value}</Heading>
-                  <Text textStyle={'xs'}>{formatCurrency(item.price)}</Text>
-                </Box>
+            <HStack>
+              <Text textStyle={'sm'} className="py-1 text-neutral-500 ">
+                Đã bán 71,5k
+              </Text>
+              <HStack>
+                <HiStar className="text-yellow-400" />
+                <Text textStyle={'sm'} className="py-1 text-neutral-500 ">
+                  4.9
+                </Text>
               </HStack>
-            </GridItem>
-          ))}
-        </Grid>
+            </HStack>
+          </Box>
+          {/* variants */}
+          <Box className="py-0">
+            <Heading size={'md'} className="font-bold pb-2">
+              Storage
+            </Heading>
+            <Grid templateColumns={'repeat(3, 1fr)'} gap={2}>
+              {details.variants.storage.map(item => (
+                <GridItem
+                  key={item.id}
+                  className="max-w-44 h-16 border shadow rounded-xl flex flex-col justify-center items-center"
+                >
+                  <Heading size={'md'}>{item.value}</Heading>
+                  <Text textStyle={'xs'}>{formatCurrency(item.price)}</Text>
+                </GridItem>
+              ))}
+            </Grid>
+          </Box>
+          <Box className="py-2">
+            <Heading size={'md'} className="font-bold pb-2">
+              Color
+            </Heading>
+            <Grid templateColumns={'repeat(3, 1fr)'} gap={2}>
+              {details.variants.color.map(item => (
+                <GridItem
+                  key={item.id}
+                  className="max-w-44 h-16 border shadow rounded-xl flex flex-row justify-center items-center"
+                >
+                  <HStack className="w-full justify-start">
+                    <Box className="bg-white h-10 w-10 rounded-xl relative">
+                      <Image
+                        src={details.images[0]}
+                        alt="iphone-16"
+                        className="object-cover"
+                        fill
+                      />
+                    </Box>
+                    <Box>
+                      <Heading size={'sm'}>{item.value}</Heading>
+                      <Text textStyle={'xs'}>{formatCurrency(item.price)}</Text>
+                    </Box>
+                  </HStack>
+                </GridItem>
+              ))}
+            </Grid>
+          </Box>
+          {/* order now */}
+          <Box className="py-2">
+            <HStack className="py-1">
+              <Button className="flex-1 bg-red-500  py-7 rounded-xl shadow">
+                <Heading size={'lg'} className="font-bold uppercase">
+                  Mua ngay
+                </Heading>
+              </Button>
+              <Button className="w-1/4 bg-red-500 py-7 rounded-xl shadow flex flex-col items-center gap-1">
+                <Heading size={'lg'} className="font-bold uppercase">
+                  <CartIcon color="white" />
+                </Heading>
+                <Text textStyle={'xs'} className="text-white">
+                  Thêm vào giỏ
+                </Text>
+              </Button>
+            </HStack>
+            <HStack className="py-1">
+              <Button className="flex-1 py-7 rounded-xl shadow flex flex-col items-center gap-0">
+                <Heading size={'lg'} className="text-white font-bold uppercase">
+                  Mua Trả góp
+                </Heading>
+                <Text textStyle={'xs'} className="text-white">
+                  Duyệt hồ sơ trong 5 phút
+                </Text>
+              </Button>
+              <Button className="flex-1 py-7 rounded-xl shadow flex flex-col items-center gap-0">
+                <Heading size={'lg'} className="font-bold uppercase">
+                  Trả góp qua thẻ
+                </Heading>
+                <Text textStyle={'xs'} className="text-white">
+                  Visa, MasterCard, JCB, Amex
+                </Text>
+              </Button>
+            </HStack>
+          </Box>
+        </Box>
       </Box>
-      <Box className="py-2">
-        <HStack className="py-1">
-          <Button className="flex-1 bg-red-500  py-7 rounded-xl shadow">
-            <Heading size={'lg'} className="font-bold uppercase">
-              Mua ngay
-            </Heading>
-          </Button>
-          <Button className="w-1/4 bg-red-500 py-7 rounded-xl shadow flex flex-col items-center gap-1">
-            <Heading size={'lg'} className="font-bold uppercase">
-              <CartIcon color="white" />
-            </Heading>
-            <Text textStyle={'xs'} className="text-white">
-              Thêm vào giỏ
-            </Text>
-          </Button>
-        </HStack>
-        <HStack className="py-1">
-          <Button className="flex-1 py-7 rounded-xl shadow flex flex-col items-center gap-0">
-            <Heading size={'lg'} className="text-white font-bold uppercase">
-              Mua Trả góp
-            </Heading>
-            <Text textStyle={'xs'} className="text-white">
-              Duyệt hồ sơ trong 5 phút
-            </Text>
-          </Button>
-          <Button className="flex-1 py-7 rounded-xl shadow flex flex-col items-center gap-0">
-            <Heading size={'lg'} className="font-bold uppercase">
-              Trả góp qua thẻ
-            </Heading>
-            <Text textStyle={'xs'} className="text-white">
-              Visa, MasterCard, JCB, Amex
-            </Text>
-          </Button>
-        </HStack>
-      </Box>
+
       {/* specification */}
       <Box className="mt-4 py-2 px-2 border shadow rounded-xl">
         <AccordionRoot multiple defaultValue={['1']}>

@@ -82,7 +82,7 @@ export default function Home() {
   ];
 
   return (
-    <Box className="w-full">
+    <Box className="container mx-auto">
       <Box className="py-2">
         <AspectRatio ratio={3 / 1}>
           <Image
@@ -95,7 +95,14 @@ export default function Home() {
       </Box>
       <Box className="px-2">
         <Title value="Categories" extraClassName="text-center" />
-        <Grid templateColumns="repeat(4, 1fr)" gap="2" className="py-2">
+        <Grid
+          templateColumns={{
+            base: 'repeat(4, 1fr)',
+            md: 'repeat(8, 1fr)',
+          }}
+          gap="2"
+          className="py-2"
+        >
           {categories.map(cate => (
             <CategoryItem
               key={cate.href}
@@ -108,8 +115,16 @@ export default function Home() {
       </Box>
       <Box className="py-4 px-2">
         <SectionHeader title="Smartphone" href="#" />
-        <Grid templateColumns={'repeat(2, 1fr)'} gap={4} className="py-2">
-          {MOCK_IPHONE.slice(0, 4).map(item => (
+        <Grid
+          templateColumns={{
+            base: 'repeat(2, 1fr)',
+            md: 'repeat(4, 1fr)',
+            lg: 'repeat(6, 1fr)',
+          }}
+          gap={4}
+          className="py-2"
+        >
+          {MOCK_IPHONE.slice(0, 12).map(item => (
             <ProductCard
               key={item.id}
               name={item.name}
@@ -125,8 +140,16 @@ export default function Home() {
 
       <Box className="py-4 px-2">
         <SectionHeader title="Laptop" href="#" />
-        <Grid templateColumns={'repeat(2, 1fr)'} gap={4} className="py-2">
-          {MOCK_LAPTOP.slice(0, 4).map(item => (
+        <Grid
+          templateColumns={{
+            base: 'repeat(2, 1fr)',
+            md: 'repeat(4, 1fr)',
+            lg: 'repeat(6, 1fr)',
+          }}
+          gap={4}
+          className="py-2"
+        >
+          {MOCK_LAPTOP.slice(0, 12).map(item => (
             <ProductCard
               key={item.id}
               name={item.name}
@@ -142,8 +165,16 @@ export default function Home() {
 
       <Box className="py-4 px-2">
         <SectionHeader title="Headphone" href="#" />
-        <Grid templateColumns={'repeat(2, 1fr)'} gap={4} className="py-2">
-          {MOCK_HEADSET.slice(0, 4).map(item => (
+        <Grid
+          templateColumns={{
+            base: 'repeat(2, 1fr)',
+            md: 'repeat(4, 1fr)',
+            lg: 'repeat(6, 1fr)',
+          }}
+          gap={4}
+          className="py-2"
+        >
+          {MOCK_HEADSET.slice(0, 12).map(item => (
             <ProductCard
               key={item.id}
               name={item.name}
@@ -158,8 +189,16 @@ export default function Home() {
       </Box>
       <Box className="py-4 px-2">
         <SectionHeader title="Smartwatch" href="#" />
-        <Grid templateColumns={'repeat(2, 1fr)'} gap={4} className="py-2">
-          {MOCK_SMARTWATCH.slice(0, 4).map(item => (
+        <Grid
+          templateColumns={{
+            base: 'repeat(2, 1fr)',
+            md: 'repeat(4, 1fr)',
+            lg: 'repeat(6, 1fr)',
+          }}
+          gap={4}
+          className="py-2"
+        >
+          {MOCK_SMARTWATCH.slice(0, 12).map(item => (
             <ProductCard
               key={item.id}
               name={item.name}
@@ -176,7 +215,7 @@ export default function Home() {
       <Box className="py-4 px-2">
         <SectionHeader title="Tech News" href="#" />
         <Box className="py-2 flex overflow-auto gap-4 hide-scrollbar">
-          {MOCK_TECH_NEWS.slice(0, 4).map(item => (
+          {MOCK_TECH_NEWS.slice(0, 12).map(item => (
             <NewsCard
               key={item.id}
               title={item.title}
